@@ -42,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     async function loadChannels() {
       try {
-        const res = await fetch('/api/channels');
+        const res = await fetch('https://streamverse-iptv.vercel.app/api/channels');
         const data: Channel[] = await res.json();
         setChannels(data);
 
@@ -68,7 +68,7 @@ export default function Home() {
     async function fetchEpg() {
       setLoadingEpg(true);
       try {
-        const res = await fetch(`/api/epg?id=${encodeURIComponent(activeChannel.id)}`);
+        const res = await fetch(`https://streamverse-iptv.vercel.app/api/epg?id=${encodeURIComponent(activeChannel.id)}`);
         const epgData = await res.json();
         setEpg(epgData);
       } catch (err) {
